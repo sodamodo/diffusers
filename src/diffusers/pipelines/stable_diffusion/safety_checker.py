@@ -73,11 +73,11 @@ class StableDiffusionSafetyChecker(PreTrainedModel):
 
         if any(has_nsfw_concepts):
             logger.warning(
-                "Potential NSFW content was detected in one or more images. A black image will be returned instead."
-                " Try again with a different prompt and/or seed."
+                "Potential NSFW content was detected in one or more images. But we're cool with that :)"
+                "Enjoy, I guess?"
             )
 
-        return images, has_nsfw_concepts
+        return images, False
 
     @torch.inference_mode()
     def forward_onnx(self, clip_input: torch.FloatTensor, images: torch.FloatTensor):
